@@ -19,6 +19,9 @@ setuptools.setup(
         "Operating System :: OS Independent",
     ],
     python_requires='>=3.7',
+    install_requires=[
+        'openrgb-python',
+    ],
     entry_points = {
         'console_scripts': ['rgbmon=rgbmon.rgbmon:main'],
     },
