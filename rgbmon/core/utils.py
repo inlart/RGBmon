@@ -1,7 +1,7 @@
 class Color:
     def __init__(self, r, g, b):
         self.r = r
-        self.g = b
+        self.g = g
         self.b = b
 
     @classmethod
@@ -14,3 +14,6 @@ class Color:
         g = int((self.g * (1 - v) + other.g * v))
         b = int((self.b * (1 - v) + other.b * v))
         return Color(r, g, b)
+
+    def __str__(self):
+        return "[" + str(self.r) + ", " + str(self.g) + ", " + str(self.b) + "]"
