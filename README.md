@@ -20,6 +20,6 @@ You should only use modes on devices that can handle frequent color updates. If 
 
 Firstly start the OpenRGB SDK server.
 
-The script takes a the path to the config file as argument. There is an example directory which contains a `ram.json`. You can use it using:
+The script takes a the path to the config file as argument. There is an example directory which contains a `ram.json`. An example execution of `rgbmon` could look like:
 
 `rgbmon --config=path/to/ram.json`
