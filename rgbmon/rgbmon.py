@@ -9,10 +9,9 @@ import core.source
 import core.converter
 
 from core.task import Task
-from source.memory import Source
 
 handler = logging.StreamHandler(sys.stdout)
-formatter = logging.Formatter(fmt = " %(name)-16s ~ %(levelname)-8s ~ %(message)s")
+formatter = logging.Formatter(fmt = " %(name)-16s :: %(levelname)-8s :: %(message)s")
 handler.setFormatter(formatter)
 root = logging.getLogger()
 root.setLevel(logging.NOTSET)
