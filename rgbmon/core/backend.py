@@ -14,7 +14,7 @@ def load_backends(backends_config):
             continue
         module = importlib.import_module("backend." + backend_name)
         try:
-            backend = getattr(module, "Backend")(backend_config["settings"])
+            backend = getattr(module, "Backend")(backend_config["settings"] if "settings" in backend_config else None)
             backends[backend_ref] = backend
             log.info("Backend {} loaded successfully.".format(backend_name))
         except Exception as e:

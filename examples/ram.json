@@ -28,11 +28,7 @@
     "backends": [
         {
             "reference": "openrgbref",
-            "name": "openrgb",
-            "settings" : {
-                "ip_address": "127.0.0.1",
-                "port": 6742
-            }
+            "name": "openrgb"
         }
     ]
 }

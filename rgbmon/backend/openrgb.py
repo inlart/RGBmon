@@ -8,8 +8,11 @@ logger = logging.getLogger(__name__)
 
 class Backend():
     def __init__(self, settings):
-        ip = settings["ip_address"]
-        port = settings["port"]
+        ip = "127.0.0.1"
+        port = 6742
+        if settings:
+            ip = settings.get("ip_address", ip)
+            port = settings.get("port", port)
         logger.info("Using OpenRGB backend at {}:{}".format(ip, port))
         self.client = OpenRGBClient(ip, port)
 
