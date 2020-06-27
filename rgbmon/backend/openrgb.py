@@ -19,7 +19,11 @@ class Backend():
         for led_entry in led_config:
             devices = self.client.get_devices_by_type(DeviceType(led_entry["type"]))
 
-            for device_id in led_entry["device_ids"]:
+            device_list = range(len(devices))
+            if "device_ids" in led_entry:
+                device_list = led_entry["device_ids"]
+
+            for device_id in device_list:
                 device = devices[device_id]
                 device.set_mode(led_entry["mode"])
                 led_list.extend(reversed(device.leds))
