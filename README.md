@@ -1,5 +1,8 @@
 # RGBmon
 
+[![PyPI Status](https://img.shields.io/pypi/v/rgbmon?style=flat-square)](https://pypi.org/project/rgbmon)
+[![Documentation Status](https://readthedocs.org/projects/rgbmon/badge/?version=latest)](https://rgbmon.readthedocs.io/en/latest/?badge=latest)
+
 RGBmon is a system monitoring tool that lights up your components to indicate system status.
 
 **Note:** This is really early stage. Expect the project and configuration to change a lot.
