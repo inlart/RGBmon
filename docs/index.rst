@@ -5,7 +5,8 @@ RGBmon documentation
    :maxdepth: 2
    :caption: Contents:
 
-   configuration.rst
+   configuration
+   modules
 
 Indices and tables
 ==================
