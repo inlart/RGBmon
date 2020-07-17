@@ -12,11 +12,14 @@ class Converter:
 
 
     def convert(self, value):
-        segment_size = 100.0 / (len(self.leds) - 1)
+        segment_size = 100.0 / len(self.leds)
         segment = math.floor(value / segment_size)
 
+        if(segment == segment_size):
+            segment = segment_size - 1
+
         v = (value - segment_size * segment) / segment_size
-        fade = self.filled.interpolate(self.default, v)
+        fade = self.default.interpolate(self.filled, v)
 
         out = []
         for i in range(len(self.leds)):
