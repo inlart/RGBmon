@@ -12,11 +12,12 @@ class Converter:
 
 
     def convert(self, value):
-        segment_size = 100.0 / len(self.leds)
+        num_segments = len(self.leds)
+        segment_size = 100.0 / num_segments
         segment = math.floor(value / segment_size)
 
-        if(segment == segment_size):
-            segment = segment_size - 1
+        if(segment == num_segments):
+            segment = num_segments - 1
 
         out = []
         for i in range(len(self.leds)):

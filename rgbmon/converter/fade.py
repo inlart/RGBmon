@@ -11,10 +11,12 @@ class Converter:
         self.colors = list(map(lambda c: core.utils.Color.from_string(c), config["colors"]))
 
     def convert(self, value):
-        segment_size = 100.0 / (len(self.colors) - 1)
+        num_segments = len(self.colors) - 1
+        segment_size = 100.0 / num_segments
         segment = math.floor(value / segment_size)
-        if segment >= segment_size:
-            segment = segment_size - 1
+
+        if segment == num_segments:
+            segment = num_segments - 1
 
         start = self.colors[segment]
         end = self.colors[segment + 1]
