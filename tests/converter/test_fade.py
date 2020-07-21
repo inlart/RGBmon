@@ -17,34 +17,39 @@ class TestFade:
     def test_zero(self, converter):
         color_list = converter.convert(0.0)
         for _, color in color_list:
-            assert(color.r == 255)
-            assert(color.g == 0)
-            assert(color.b == 0)
+            r, g, b = color
+            assert(r == 255)
+            assert(g == 0)
+            assert(b == 0)
 
     def test_interpolation1(self, converter):
         color_list = converter.convert(25.0)
         for _, color in color_list:
-            assert(color.r > 0 and color.r < 255)
-            assert(color.g > 0 and color.g < 255)
-            assert(color.b == 0)
+            r, g, b = color
+            assert(r > 0 and r < 255)
+            assert(g > 0 and g < 255)
+            assert(b == 0)
 
     def test_half(self, converter):
         color_list = converter.convert(50.0)
         for _, color in color_list:
-            assert(color.r == 0)
-            assert(color.g == 255)
-            assert(color.b == 0)
+            r, g, b = color
+            assert(r == 0)
+            assert(g == 255)
+            assert(b == 0)
 
     def test_interpolation2(self, converter):
         color_list = converter.convert(75.0)
         for _, color in color_list:
-            assert(color.r == 0)
-            assert(color.g > 0 and color.g < 255)
-            assert(color.b > 0 and color.b < 255)
+            r, g, b = color
+            assert(r == 0)
+            assert(g > 0 and g < 255)
+            assert(b > 0 and b < 255)
 
     def test_full(self, converter):
         color_list = converter.convert(100.0)
         for _, color in color_list:
-            assert(color.r == 0)
-            assert(color.g == 0)
-            assert(color.b == 255)
+            r, g, b = color
+            assert(r == 0)
+            assert(g == 0)
+            assert(b == 255)

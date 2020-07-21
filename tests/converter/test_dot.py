@@ -17,59 +17,64 @@ class TestFade:
     def test_zero(self, converter):
         color_list = converter.convert(0.0)
         for i, color in color_list:
+            r, g, b = color
             if i == 0:
-                assert(color.r == 0)
-                assert(color.g == 255)
-                assert(color.b == 0)
+                assert(r == 0)
+                assert(g == 255)
+                assert(b == 0)
             else:
-                assert(color.r == 255)
-                assert(color.g == 0)
-                assert(color.b == 0)
+                assert(r == 255)
+                assert(g == 0)
+                assert(b == 0)
 
     def test_first(self, converter):
         color_list = converter.convert(10.0)
         for i, color in color_list:
+            r, g, b = color
             if i == 0:
-                assert(color.r == 0)
-                assert(color.g == 255)
-                assert(color.b == 0)
+                assert(r == 0)
+                assert(g == 255)
+                assert(b == 0)
             else:
-                assert(color.r == 255)
-                assert(color.g == 0)
-                assert(color.b == 0)
+                assert(r == 255)
+                assert(g == 0)
+                assert(b == 0)
 
     def test_second(self, converter):
         color_list = converter.convert(30.0)
         for i, color in color_list:
+            r, g, b = color
             if i == 1:
-                assert(color.r == 0)
-                assert(color.g == 255)
-                assert(color.b == 0)
+                assert(r == 0)
+                assert(g == 255)
+                assert(b == 0)
             else:
-                assert(color.r == 255)
-                assert(color.g == 0)
-                assert(color.b == 0)
+                assert(r == 255)
+                assert(g == 0)
+                assert(b == 0)
 
     def test_half(self, converter):
         color_list = converter.convert(50.0)
         for i, color in color_list:
+            r, g, b = color
             if i == 2:
-                assert(color.r == 0)
-                assert(color.g == 255)
-                assert(color.b == 0)
+                assert(r == 0)
+                assert(g == 255)
+                assert(b == 0)
             else:
-                assert(color.r == 255)
-                assert(color.g == 0)
-                assert(color.b == 0)
+                assert(r == 255)
+                assert(g == 0)
+                assert(b == 0)
 
     def test_full(self, converter):
         color_list = converter.convert(100.0)
         for i, color in color_list:
+            r, g, b = color
             if i == 3:
-                assert(color.r == 0)
-                assert(color.g == 255)
-                assert(color.b == 0)
+                assert(r == 0)
+                assert(g == 255)
+                assert(b == 0)
             else:
-                assert(color.r == 255)
-                assert(color.g == 0)
-                assert(color.b == 0)
+                assert(r == 255)
+                assert(g == 0)
+                assert(b == 0)
