@@ -28,6 +28,14 @@ rgbmon.converter.fill module
    :undoc-members:
    :show-inheritance:
 
+rgbmon.converter.rainbow module
+-------------------------------
+
+.. automodule:: rgbmon.converter.rainbow
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
 
 Module contents
 ---------------
