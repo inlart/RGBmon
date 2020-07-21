@@ -13,7 +13,7 @@ def converter():
     config = json.loads('{"colors":["FF0000","00FF00"],"leds":[{"type": 1,"mode": "direct"}]}')
     return Converter(config, backend)
 
-class TestFade:
+class TestDot:
     def test_zero(self, converter):
         color_list = converter.convert(0.0)
         for i, color in color_list:
