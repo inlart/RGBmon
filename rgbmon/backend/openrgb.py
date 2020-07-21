@@ -35,4 +35,5 @@ class Backend():
 
     def apply(self, leds_colors):
         for led, color in leds_colors:
-            led.set_color(RGBColor(color.r, color.g, color.b))
+            r, g, b = color
+            led.set_color(RGBColor(r, g, b))

@@ -8,7 +8,7 @@ class Converter:
         # TODO: check if colors > 1
         self.backend = backend
         self.leds = backend.get_led_list(config["leds"])
-        self.colors = list(map(lambda c: core.utils.Color.from_string(c), config["colors"]))
+        self.colors = list(map(lambda c: core.utils.rgb_from_string(c), config["colors"]))
 
     def convert(self, value):
         num_segments = len(self.colors) - 1
@@ -22,6 +22,6 @@ class Converter:
         end = self.colors[segment + 1]
 
         v = (value - segment_size * segment) / segment_size
-        data = start.interpolate(end, v)
+        data = core.utils.interpolate(start, end, v)
 
         return list(map(lambda c: (c, data), self.leds))

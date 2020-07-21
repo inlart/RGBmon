@@ -7,8 +7,8 @@ class Converter:
         # TODO: check if colors == 2
         self.backend = backend
         self.leds = backend.get_led_list(config["leds"])
-        self.default = core.utils.Color.from_string(config["colors"][0])
-        self.filled = core.utils.Color.from_string(config["colors"][1])
+        self.default = core.utils.rgb_from_string(config["colors"][0])
+        self.filled = core.utils.rgb_from_string(config["colors"][1])
 
 
     def convert(self, value):
@@ -20,7 +20,7 @@ class Converter:
             segment = num_segments - 1
 
         v = (value - segment_size * segment) / segment_size
-        fade = self.default.interpolate(self.filled, v)
+        fade = core.utils.interpolate(self.default, self.filled, v)
 
         out = []
         for i in range(len(self.leds)):
