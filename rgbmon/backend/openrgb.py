@@ -6,6 +6,11 @@ from openrgb.utils import RGBColor, DeviceType
 
 logger = logging.getLogger(__name__)
 
+def create_device(id):
+    ret = {}
+    ret["id"] = id
+    return ret
+
 class Backend():
     def __init__(self, settings):
         ip = "127.0.0.1"
@@ -22,14 +27,25 @@ class Backend():
         for led_entry in led_config:
             devices = self.client.get_devices_by_type(DeviceType(led_entry["type"]))
 
-            device_list = range(len(devices))
-            if "device_ids" in led_entry:
-                device_list = led_entry["device_ids"]
+            device_list =  list(map(create_device, range(len(devices))))
+            if "devices" in led_entry:
+                device_list = led_entry["devices"]
+            for device in device_list:
+                # Get the device
+                device_id = device["id"]
+                orgb_device = devices[device_id]
 
-            for device_id in device_list:
-                device = devices[device_id]
-                device.set_mode(led_entry["mode"])
-                led_list.extend(reversed(device.leds))
+                # Set the target mode
+                orgb_device.set_mode(led_entry["mode"])
+
+                # Check if it requires specific zones and add LEDs
+                if "zones" in device:
+                    for zone_id in device["zones"]:
+                        led_list.extend(reversed(orgb_device.zones[zone_id].leds))
+                else:
+                    led_list.extend(reversed(orgb_device.leds))
+        if not led_list:
+            logger.warning("Could not find any LEDs for backend request.")
         return led_list
 
 
