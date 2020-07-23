@@ -15,7 +15,7 @@
                         ],
                         "leds": [
                             {
-                                "type": 1,
+                                "type": "RAM",
                                 "mode": "direct"
                             }
                         ]

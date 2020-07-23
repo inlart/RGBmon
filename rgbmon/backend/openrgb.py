@@ -6,6 +6,26 @@ from openrgb.utils import RGBColor, DeviceType
 
 logger = logging.getLogger(__name__)
 
+device_type_mapping = {
+    "motherboard": 0,
+    "mainboard": 0,
+    "ram": 1,
+    "gpu": 2,
+    "cooler": 3,
+    "ledstrip": 4,
+    "keyboard": 5,
+    "mouse": 6,
+    "mousemat": 7,
+    "headset": 8,
+    "headset_stand": 9
+}
+
+def get_device_type(device):
+    device = device.lower()
+    if device in device_type_mapping:
+        return device_type_mapping[device]
+    raise ValueError("Invalid device {}".format(device))
+
 def create_device(id):
     ret = {}
     ret["id"] = id
@@ -25,7 +45,8 @@ class Backend():
         led_list = []
         logger.debug("Retrieving led list from OpenRGB backend")
         for led_entry in led_config:
-            devices = self.client.get_devices_by_type(DeviceType(led_entry["type"]))
+            device_type = get_device_type(led_entry["type"])
+            devices = self.client.get_devices_by_type(DeviceType(device_type))
 
             device_list =  list(map(create_device, range(len(devices))))
             if "devices" in led_entry:
