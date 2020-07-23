@@ -52,4 +52,4 @@ class Backend():
     def apply(self, leds_colors):
         for led, color in leds_colors:
             r, g, b = color
-            led.set_color(RGBColor(r, g, b))
+            led.set_color(RGBColor(r, g, b), fast=True)
