@@ -1,7 +1,3 @@
-import argparse
-import json
-import logging
-import sys
 import threading
 
 import core.backend
@@ -9,13 +5,6 @@ import core.source
 import core.converter
 
 from core.task import Task
-
-handler = logging.StreamHandler(sys.stdout)
-formatter = logging.Formatter(fmt = " %(name)-16s :: %(levelname)-8s :: %(message)s")
-handler.setFormatter(formatter)
-root = logging.getLogger()
-root.setLevel(logging.NOTSET)
-root.addHandler(handler)
 
 def run(config):
     # load backends
@@ -35,18 +24,3 @@ def run(config):
         task = Task(task["interval"], source, converters)
         t = threading.Thread(target=task.run)
         t.start()
-
-def get_arguments():
-    parser = argparse.ArgumentParser(description="")
-    parser.add_argument('--config', dest='config', help='path to config file')
-    return parser.parse_args()
-
-def main():
-    args = get_arguments()
-
-    with open(args.config) as json_file:
-        run(json.load(json_file))
-
-
-if __name__ == "__main__":
-    main()

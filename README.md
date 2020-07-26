@@ -17,7 +17,7 @@ Only use modes on devices that can handle frequent color updates. If the device 
 ## Usage
 
 * Start the OpenRGB SDK server
-* Run RGBmon `rgbmon --config=path/to/config.json`
+* Run RGBmon `rgbmon-cli --config=path/to/config.json`
 
 RGBmon always needs a path to a valid configuration in the json format.
 The project provides sample configurations in the `examples/` directory which you can try.

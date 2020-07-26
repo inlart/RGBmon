@@ -23,6 +23,6 @@ setuptools.setup(
         'openrgb-python',
     ],
     entry_points = {
-        'console_scripts': ['rgbmon=rgbmon.rgbmon:main'],
+        'console_scripts': ['rgbmon-cli=rgbmon.cli:main'],
     },
 )
