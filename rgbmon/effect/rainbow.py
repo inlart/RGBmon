@@ -2,7 +2,7 @@ import math
 
 import core.utils
 
-class Converter:
+class Effect:
     def __init__(self, config, backend):
         self.backend = backend
         self.leds = backend.get_led_list(config["leds"])

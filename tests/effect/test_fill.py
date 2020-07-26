@@ -1,6 +1,6 @@
 import pytest
 import json
-from rgbmon.converter.fill import Converter
+from rgbmon.effect.fill import Effect
 
 
 class Backend():
@@ -8,22 +8,22 @@ class Backend():
         return range(4)
 
 @pytest.fixture()
-def converter():
+def effect():
     backend = Backend()
     config = json.loads('{"colors":["FF0000","00FF00"],"leds":[{"type": 1,"mode": "direct"}]}')
-    return Converter(config, backend)
+    return Effect(config, backend)
 
 class TestFill:
-    def test_zero(self, converter):
-        color_list = converter.convert(0.0)
+    def test_zero(self, effect):
+        color_list = effect.convert(0.0)
         for i, color in color_list:
             r, g, b = color
             assert(r == 255)
             assert(g == 0)
             assert(b == 0)
 
-    def test_first(self, converter):
-        color_list = converter.convert(10.0)
+    def test_first(self, effect):
+        color_list = effect.convert(10.0)
         for i, color in color_list:
             r, g, b = color
             if i == 0:
@@ -35,8 +35,8 @@ class TestFill:
                 assert(g == 0)
                 assert(b == 0)
 
-    def test_second(self, converter):
-        color_list = converter.convert(30.0)
+    def test_second(self, effect):
+        color_list = effect.convert(30.0)
         for i, color in color_list:
             r, g, b = color
             if i == 0:
@@ -52,8 +52,8 @@ class TestFill:
                 assert(g == 0)
                 assert(b == 0)
 
-    def test_half(self, converter):
-        color_list = converter.convert(50.0)
+    def test_half(self, effect):
+        color_list = effect.convert(50.0)
         for i, color in color_list:
             r, g, b = color
             if i < 2:
@@ -65,8 +65,8 @@ class TestFill:
                 assert(g == 0)
                 assert(b == 0)
 
-    def test_full(self, converter):
-        color_list = converter.convert(100.0)
+    def test_full(self, effect):
+        color_list = effect.convert(100.0)
         for i, color in color_list:
             r, g, b = color
             assert(r == 0)

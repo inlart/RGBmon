@@ -2,7 +2,7 @@ import threading
 
 import core.backend
 import core.source
-import core.converter
+import core.effect
 
 from core.task import Task
 
@@ -11,16 +11,16 @@ def run(config):
     backends = core.backend.load_backends(config["backends"])
 
     for task in config["tasks"]:
-        # load task converters
-        converters = []
-        for converter_config in task["converters"]:
-            converter = core.converter.load_converter(converter_config, backends)
-            converters.append(converter)
+        # load task effects
+        effects = []
+        for effect_config in task["effects"]:
+            effect = core.effect.load_effect(effect_config, backends)
+            effects.append(effect)
 
         # load the source
         source = core.source.load_source(task["source"])
 
         # create a new thread for the task
-        task = Task(task["interval"], source, converters)
+        task = Task(task["interval"], source, effects)
         t = threading.Thread(target=task.run)
         t.start()

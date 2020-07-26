@@ -3,7 +3,7 @@ import math
 import core.utils
 
 
-class Converter:
+class Effect:
     def __init__(self, config, backend):
         # TODO: check if colors > 1
         self.backend = backend

@@ -2,7 +2,7 @@ import pytest
 import json
 import colorsys
 import collections
-from rgbmon.converter.rainbow import Converter
+from rgbmon.effect.rainbow import Effect
 
 
 class Backend():
@@ -10,15 +10,15 @@ class Backend():
         return range(12)
 
 @pytest.fixture()
-def converter():
+def effect():
     backend = Backend()
     config = json.loads('{"leds":[{"type": 1,"mode": "direct"}]}')
-    return Converter(config, backend)
+    return Effect(config, backend)
 
 class TestRainbow:
-    def test_rainbow(self, converter):
+    def test_rainbow(self, effect):
         for i in range(0, 100, 1):
-            color_list = converter.convert(i)
+            color_list = effect.convert(i)
             hsv_list = []
             for _, color in color_list:
                 r, g, b = color

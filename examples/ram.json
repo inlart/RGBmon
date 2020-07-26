@@ -5,7 +5,7 @@
             "source" : {
                 "name": "memory"
             },
-            "converters" : [
+            "effects" : [
                 {
                     "name": "fill",
                     "settings": {
