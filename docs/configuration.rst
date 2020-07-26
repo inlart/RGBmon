@@ -52,7 +52,7 @@ Content of a task entry:
 
 - **interval**: Task execution interval
 - **source**: Data that will get converted to color
-- **converters**: Takes the output of a source and decides how LEDs should be colored
+- **effects**: Takes the output of a source and decides how LEDs should be colored
 
 The example task that up:
 
@@ -63,7 +63,7 @@ The example task that up:
       "source" : {
         "name": "cpu"
       },
-      "converters" : [
+      "effects" : [
           {
               "name": "fill",
               "settings": {
@@ -82,3 +82,65 @@ The example task that up:
           }
       ]
   }
+
+Sources
+#######
+
+Generally a source json entry contains:
+
+- **name**: Name of the source
+- **settings**: Source dependent configuration
+
+
+CPU
+***
+
+Outputs the cpu usage.
+Configuration:
+
+- **name**: "cpu"
+- **settings**: none
+
+Memory
+******
+
+Outputs the memory usage.
+Configuration:
+
+- **name**: "memory"
+- **settings**: none
+
+Temperature
+***********
+
+Outputs sensor temperature.
+Configuration:
+
+- **name**: "temperature"
+- **settings**:
+    - **entry**: sensor driver name (e.g. k10temp)
+    - **label**: key name of in the sensor driver (e.g. Tdie)
+    - **min** (optional, default=20): minimum temperature value, every temeperature below will make the source output the same value as at min temperature
+    - **max** (optional, default=100): maximum temperature value, every temeperature above will make the source output the same value as at max temperature
+
+This source is currently only available on Linux.
+
+Sawtooth
+********
+
+Outputs a sawtooth signal with the given period.
+Configuration:
+
+- **name**: "sawtooth"
+- **settings**:
+    - **period**: Period length of the signal in seconds
+
+Sine
+****
+
+Outputs a sine signal with the given period.
+Configuration:
+
+- **name**: "sine"
+- **settings**:
+    - **period**: Period length of the signal in seconds
