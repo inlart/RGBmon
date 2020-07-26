@@ -12,10 +12,18 @@ rgbmon.core.backend module
    :undoc-members:
    :show-inheritance:
 
-rgbmon.core.converter module
-----------------------------
+rgbmon.core.effect module
+-------------------------
 
-.. automodule:: rgbmon.core.converter
+.. automodule:: rgbmon.core.effect
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
+rgbmon.core.rgbmon module
+-------------------------
+
+.. automodule:: rgbmon.core.rgbmon
    :members:
    :undoc-members:
    :show-inheritance:

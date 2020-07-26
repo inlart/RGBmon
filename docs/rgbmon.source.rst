@@ -36,6 +36,14 @@ rgbmon.source.sine module
    :undoc-members:
    :show-inheritance:
 
+rgbmon.source.temperature module
+--------------------------------
+
+.. automodule:: rgbmon.source.temperature
+   :members:
+   :undoc-members:
+   :show-inheritance:
+
 
 Module contents
 ---------------

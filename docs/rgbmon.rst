@@ -8,17 +8,17 @@ Subpackages
    :maxdepth: 4
 
    rgbmon.backend
-   rgbmon.converter
    rgbmon.core
+   rgbmon.effect
    rgbmon.source
 
 Submodules
 ----------
 
-rgbmon.rgbmon module
---------------------
+rgbmon.cli module
+-----------------
 
-.. automodule:: rgbmon.rgbmon
+.. automodule:: rgbmon.cli
    :members:
    :undoc-members:
    :show-inheritance:
