@@ -10,8 +10,9 @@ class Backend():
 @pytest.fixture()
 def effect():
     backend = Backend()
-    config = json.loads('{"colors":["FF0000","00FF00","0000FF"],"leds":[{"type": 1,"mode": "direct"}]}')
-    return Effect(config, backend)
+    config = json.loads('{"colors":["FF0000","00FF00","0000FF"]}')
+    backend_config = json.loads('{"leds":[{"type": 1,"mode": "direct"}]}')
+    return Effect(config, backend, backend_config)
 
 class TestFade:
     def test_zero(self, effect):

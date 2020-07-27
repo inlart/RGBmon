@@ -12,8 +12,9 @@ class Backend():
 @pytest.fixture()
 def effect():
     backend = Backend()
-    config = json.loads('{"leds":[{"type": 1,"mode": "direct"}]}')
-    return Effect(config, backend)
+    config = json.loads('{}')
+    backend_config = json.loads('{"leds":[{"type": 1,"mode": "direct"}]}')
+    return Effect(config, backend, backend_config)
 
 class TestRainbow:
     def test_rainbow(self, effect):
