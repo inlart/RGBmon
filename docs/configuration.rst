@@ -118,8 +118,8 @@ Configuration:
 
 - **name**: "temperature"
 - **settings**:
-    - **entry**: sensor driver name (e.g. k10temp)
-    - **label**: key name of in the sensor driver (e.g. Tdie)
+    - **driver**: sensor driver name (e.g. k10temp)
+    - **label**: key name of the temeperature entry in the sensor driver (e.g. Tdie)
     - **min** (optional, default=20): minimum temperature value, every temeperature below will make the source output the same value as at min temperature
     - **max** (optional, default=100): maximum temperature value, every temeperature above will make the source output the same value as at max temperature
 
