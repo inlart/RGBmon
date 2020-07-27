@@ -3,9 +3,9 @@ import math
 import core.utils
 
 class Effect:
-    def __init__(self, config, backend):
+    def __init__(self, config, backend, backend_config):
         self.backend = backend
-        self.leds = backend.get_led_list(config["leds"])
+        self.leds = backend.get_led_list(backend_config)
 
     def convert(self, value):
         num_segments = len(self.leds)

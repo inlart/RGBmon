@@ -3,10 +3,10 @@ import math
 import core.utils
 
 class Effect:
-    def __init__(self, config, backend):
+    def __init__(self, config, backend, backend_config):
         # TODO: check if colors == 2
         self.backend = backend
-        self.leds = backend.get_led_list(config["leds"])
+        self.leds = backend.get_led_list(backend_config)
         self.default = core.utils.rgb_from_string(config["colors"][0])
         self.filled = core.utils.rgb_from_string(config["colors"][1])
 

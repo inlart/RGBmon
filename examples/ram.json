@@ -12,15 +12,17 @@
                         "colors": [
                             "306998",
                             "FFD43B"
-                        ],
+                        ]
+                    },
+                    "backend": {
+                        "name": "openrgbref",
                         "leds": [
                             {
                                 "type": "RAM",
                                 "mode": "direct"
                             }
                         ]
-                    },
-                    "backend": "openrgbref"
+                    }
                 }
             ]
         }

@@ -41,7 +41,8 @@ class Backend():
         logger.info("Using OpenRGB backend at {}:{}".format(ip, port))
         self.client = OpenRGBClient(ip, port)
 
-    def get_led_list(self, led_config):
+    def get_led_list(self, config):
+        led_config = config["leds"]
         led_list = []
         logger.debug("Retrieving led list from OpenRGB backend")
         for led_entry in led_config:
