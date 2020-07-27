@@ -5,14 +5,14 @@ with open("README.md", "r") as fh:
 
 setuptools.setup(
     name="rgbmon",
-    version="0.0.1",
+    version="0.1.0",
     author="inlart",
     author_email="g@inlart.com",
     description="System monitoring tool that colors your hardware",
     long_description=long_description,
     long_description_content_type="text/markdown",
     url="https://github.com/inlart/RGBmon",
-    packages=setuptools.find_packages(),
+    packages=setuptools.find_packages(exclude=["tests.*","tests"]),
     classifiers=[
         "Programming Language :: Python :: 3",
         "License :: OSI Approved :: GNU General Public License v3 (GPLv3)",
