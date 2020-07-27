@@ -2,7 +2,7 @@ import psutil
 
 class Source:
     def __init__(self, config):
-        self.entry = config["entry"]
+        self.driver = config["driver"]
         self.label = config["label"]
         self.min = 20.0
         self.max = 100.0
@@ -14,11 +14,11 @@ class Source:
 
     def get(self):
         temps = psutil.sensors_temperatures()
-        if self.entry not in temps:
-            raise RuntimeError("Could not find temerature entry {}".format(self.entry))
+        if self.driver not in temps:
+            raise RuntimeError("Could not find temerature entry {}".format(self.driver))
 
-        entry = temps[self.entry]
-        for temp in entry:
+        driver = temps[self.driver]
+        for temp in driver:
             if temp.label != self.label:
                 continue
             value = (temp.current - self.min) * 100.0 / (self.max - self.min)
