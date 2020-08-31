@@ -1,0 +1,33 @@
+{
+    "tasks": [
+        {
+            "interval": 0.1,
+            "source" : {
+                "name": "sine",
+                "settings": {
+                    "period": 2
+                }
+            },
+            "effects" : [
+                {
+                    "name": "rainbow",
+                    "backend": {
+                        "name": "openrgbref",
+                        "leds": [
+                            {
+                                "type": "cooler",
+                                "mode": "direct"
+                            }
+                        ]
+                    }
+                }
+            ]
+        }
+    ],
+    "backends": [
+        {
+            "reference": "openrgbref",
+            "name": "openrgb"
+        }
+    ]
+}
