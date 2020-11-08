@@ -1,6 +1,8 @@
 import colorsys
 
 def rgb_from_string(color):
+    if color[0] == "#":
+        color = color[1:]
     r, g, b = tuple(int(color[i:i+2], 16) for i in (0, 2, 4))
     return (r, g, b)
 

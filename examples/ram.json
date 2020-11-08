@@ -10,8 +10,8 @@
                     "name": "fill",
                     "settings": {
                         "colors": [
-                            "306998",
-                            "FFD43B"
+                            "#000000",
+                            "#FFD43B"
                         ]
                     },
                     "backend": {
