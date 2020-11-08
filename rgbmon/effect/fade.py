@@ -1,14 +1,14 @@
 import math
 
 import core.utils
-
+from core.colormanager import ColorManager
 
 class Effect:
     def __init__(self, config, backend, backend_config):
         # TODO: check if colors > 1
         self.backend = backend
         self.leds = backend.get_led_list(backend_config)
-        self.colors = list(map(lambda c: core.utils.rgb_from_string(c), config["colors"]))
+        self.colors = ColorManager(config["colors"])
 
     def convert(self, value):
         num_segments = len(self.colors) - 1

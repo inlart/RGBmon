@@ -1,14 +1,14 @@
 import math
 
 import core.utils
+from core.colormanager import ColorManager
 
 class Effect:
     def __init__(self, config, backend, backend_config):
         # TODO: check if colors == 2
         self.backend = backend
         self.leds = backend.get_led_list(backend_config)
-        self.default = core.utils.rgb_from_string(config["colors"][0])
-        self.filled = core.utils.rgb_from_string(config["colors"][1])
+        self.colors = ColorManager(config["colors"])
 
 
     def convert(self, value):
@@ -20,13 +20,13 @@ class Effect:
             segment = num_segments - 1
 
         v = (value - segment_size * segment) / segment_size
-        fade = core.utils.interpolate(self.default, self.filled, v)
+        fade = core.utils.interpolate(self.colors[0], self.colors[1], v)
 
         out = []
         for i in range(len(self.leds)):
-            data = self.filled
+            data = self.colors[1]
             if i > segment:
-                data = self.default
+                data = self.colors[0]
             if i == segment:
                 data = fade
 
