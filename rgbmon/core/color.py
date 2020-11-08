@@ -18,7 +18,8 @@ def load_color(color_config):
 
     module = importlib.import_module("color." + color_name)
     try:
-        color = getattr(module, "Color")(color_config["settings"])
+        settings = color_config["settings"] if "settings" in color_config else None
+        color = getattr(module, "Color")(settings)
         log.info("Color {} loaded successfully.".format(color_name))
         return color
     except Exception as e:
