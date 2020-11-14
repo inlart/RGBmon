@@ -13,7 +13,20 @@
                     "name": "fill",
                     "settings": {
                         "colors": [
-                            "#FFFFFF",
+                            {
+                                "name": "invert",
+                                "settings": {
+                                    "colors": [
+                                        {
+                                            "name": "ambient",
+                                            "settings": {
+                                                "sleep": 1
+                                            }
+                                        }
+                                    ]
+
+                                }
+                            },
                             {
                                 "name": "ambient",
                                 "settings": {
