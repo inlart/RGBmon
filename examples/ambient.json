@@ -1,0 +1,44 @@
+{
+    "tasks": [
+        {
+            "interval": 0.05,
+            "source" : {
+                "name": "sine",
+                "settings": {
+                    "period": 10
+                }
+            },
+            "effects" : [
+                {
+                    "name": "fill",
+                    "settings": {
+                        "colors": [
+                            "#FFFFFF",
+                            {
+                                "name": "ambient",
+                                "settings": {
+                                    "sleep": 1
+                                }
+                            }
+                        ]
+                    },
+                    "backend": {
+                        "name": "openrgbref",
+                        "leds": [
+                            {
+                                "type": "RAM",
+                                "mode": "direct"
+                            }
+                        ]
+                    }
+                }
+            ]
+        }
+    ],
+    "backends": [
+        {
+            "reference": "openrgbref",
+            "name": "openrgb"
+        }
+    ]
+}

@@ -21,6 +21,7 @@ setuptools.setup(
     python_requires='>=3.7',
     install_requires=[
         'openrgb-python',
+        'pyscreenshot',
     ],
     entry_points = {
         'console_scripts': ['rgbmon-cli=rgbmon.cli:main'],
