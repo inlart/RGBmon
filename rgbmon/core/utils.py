@@ -17,3 +17,11 @@ def interpolate(start, end, v):
     g = int((sg * (1 - v) + eg * v))
     b = int((sb * (1 - v) + eb * v))
     return (r, g, b)
+
+def finterpolate(start, end, v):
+    sr, sg, sb = start
+    er, eg, eb = end
+    r = (sr * (1 - v) + er * v)
+    g = (sg * (1 - v) + eg * v)
+    b = (sb * (1 - v) + eb * v)
+    return (r, g, b)
