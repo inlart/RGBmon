@@ -6,7 +6,6 @@ def invert(value):
 
 class Color:
     def __init__(self, settings):
-        print(settings)
         self.colors = ColorManager(settings["colors"])
 
     def __getitem__(self, key):
