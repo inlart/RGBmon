@@ -14,7 +14,28 @@
                     "settings": {
                         "colors": [
                             {
-                                "name": "invert",
+                                "name": "smooth",
+                                "settings": {
+                                    "colors": [
+                                        {
+                                            "name": "invert",
+                                            "settings": {
+                                                "colors": [
+                                                    {
+                                                        "name": "ambient",
+                                                        "settings": {
+                                                            "sleep": 1
+                                                        }
+                                                    }
+                                                ]
+
+                                            }
+                                        }
+                                    ]
+                                }
+                            },
+                            {
+                                "name": "smooth",
                                 "settings": {
                                     "colors": [
                                         {
@@ -24,13 +45,6 @@
                                             }
                                         }
                                     ]
-
-                                }
-                            },
-                            {
-                                "name": "ambient",
-                                "settings": {
-                                    "sleep": 1
                                 }
                             }
                         ]

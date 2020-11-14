@@ -9,7 +9,7 @@ class Color:
         self.colors = ColorManager(settings["colors"])
 
     def __getitem__(self, key):
-        inverted = map(invert, self.colors[key])
+        inverted = tuple(map(invert, self.colors[key]))
         return inverted
 
     def __len__(self):
