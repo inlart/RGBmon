@@ -11,12 +11,8 @@ def rgb_from_hsv(h,s,v):
     return (r, g, b)
 
 def interpolate(start, end, v):
-    sr, sg, sb = start
-    er, eg, eb = end
-    r = int((sr * (1 - v) + er * v))
-    g = int((sg * (1 - v) + eg * v))
-    b = int((sb * (1 - v) + eb * v))
-    return (r, g, b)
+    color = finterpolate(start, end, v)
+    return tuple(map(lambda c: int(c), color))
 
 def finterpolate(start, end, v):
     sr, sg, sb = start
