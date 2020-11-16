@@ -7,8 +7,28 @@ import logging
 
 log = logging.getLogger(__name__)
 
+updateThread = None
+updateColors = []
+
+def updateColor(step, sleep):
+    while True:
+        image = ImageGrab.grab().getdata()
+        color = (0, 0, 0)
+        values = 0
+        for i in range(0, len(image), step):
+            pcolor = image[i]
+            color = tuple(map(sum, zip(color, pcolor)))
+            values += 1
+        color = tuple(map(lambda c: int(c / values), color))
+        log.debug("Ambient color set to {} in {} modules".format(color, len(updateColors)))
+        for c in updateColors:
+            c.setColor(color)
+        time.sleep(sleep)
+
 class Color:
     def __init__(self, config):
+        global updateThread
+        global updateColors
         self.color = (255, 255, 255)
         self.sleep = 5
         self.step = 100
@@ -18,21 +38,14 @@ class Color:
             self.sleep = int(config["step"])
         log.debug("Ambient sleep set to {}".format(self.sleep))
         log.debug("Ambient step set to {}".format(self.step))
-        t = threading.Thread(target=self.updateColor)
-        t.start()
+        updateColors.append(self)
+        if not updateThread:
+            log.debug("Starting ambient update thread with step {} and sleep {}".format(self.step, self.sleep))
+            updateThread = threading.Thread(target=updateColor, args=[self.step, self.sleep])
+            updateThread.start()
 
-    def updateColor(self):
-        while True:
-            image = ImageGrab.grab().getdata()
-            color = (0, 0, 0)
-            values = 0
-            for i in range(0, len(image), self.step):
-                pcolor = image[i]
-                color = tuple(map(sum, zip(color, pcolor)))
-                values += 1
-            self.color = tuple(map(lambda c: int(c / values), color))
-            log.debug("Ambient color set to {}".format(self.color))
-            time.sleep(self.sleep)
+    def setColor(self, color):
+        self.color = color
 
     def __getitem__(self, _):
         return self.color
