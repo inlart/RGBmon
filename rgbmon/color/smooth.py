@@ -11,14 +11,15 @@ class Color:
             self.smoothness = settings["smoothness"]
         log.debug("Smoothness set to {}".format(self.smoothness))
         self.colors = ColorManager(settings["colors"])
+        self.color = [None] * len(self.colors)
 
     def __getitem__(self, key):
-        if not hasattr(self, "color"):
-            self.color = self.colors[key]
+        if not self.color[key]:
+            self.color[key] = self.colors[key]
         else:
             v = (100 - self.smoothness) / 100.
-            self.color = core.utils.finterpolate(self.color, self.colors[key], v)
-        returncolor = tuple(map(lambda c: int(c), self.color))
+            self.color[key] = core.utils.finterpolate(self.color[key], self.colors[key], v)
+        returncolor = tuple(map(lambda c: int(c), self.color[key]))
         return returncolor
 
     def __len__(self):
