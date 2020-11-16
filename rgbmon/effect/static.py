@@ -9,5 +9,5 @@ class Effect:
     def convert(self, value):
         out = []
         for i in range(len(self.leds)):
-            out.append((self.leds[i], self.colors[0]))
+            out.append((self.leds[i], self.colors[i % len(self.colors)]))
         return out
