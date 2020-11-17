@@ -247,3 +247,12 @@ A rainbow effect.
 
 - **name**: "rainbow"
 - **settings**: none
+
+Static
+******
+
+Sets the LEDs to the colors. This effect ignores the value it receives from the source.
+
+- **name**: "static"
+- **settings**:
+    - **colors**: array of colors. If there are more LEDs than colors, the colors get repeated.
