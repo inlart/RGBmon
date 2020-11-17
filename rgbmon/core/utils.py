@@ -1,4 +1,5 @@
 import colorsys
+import time
 
 def rgb_from_string(color):
     if color[0] == "#":
@@ -21,3 +22,6 @@ def finterpolate(start, end, v):
     g = (sg * (1 - v) + eg * v)
     b = (sb * (1 - v) + eb * v)
     return (r, g, b)
+
+def current_time():
+    return int(round(time.time() * 1000))

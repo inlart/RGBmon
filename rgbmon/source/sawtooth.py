@@ -1,17 +1,16 @@
 import math
 import time
 
-def current_time():
-    return int(round(time.time() * 1000))
+import core.utils
 
 class Source:
     def __init__(self, config):
         self.t = config["period"]
-        self.start = current_time()
+        self.start = core.utils.current_time()
         return
 
     def get(self):
-        diff = current_time() - self.start
+        diff = core.utils.current_time() - self.start
         value = diff % int(self.t * 1000)
 
         return value / float(self.t * 1000) * 100
