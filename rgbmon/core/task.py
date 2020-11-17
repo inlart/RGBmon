@@ -8,10 +8,14 @@ class Task:
         self.interval = interval
         self.source = source
         self.converters = converters
+        self.keepRunning = True
+
+    def stop(self):
+        self.keepRunning = False
 
     def run(self):
         try:
-            while True:
+            while self.keepRunning:
                 time.sleep(self.interval)
                 value = self.source.get()
                 for converter in self.converters:
