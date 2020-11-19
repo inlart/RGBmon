@@ -1,4 +1,5 @@
 import time
+import threading
 import logging
 
 import core.utils
@@ -11,9 +12,18 @@ class Task:
         self.source = source
         self.converters = converters
         self.keepRunning = True
+        self.thread = None
+
+    def start(self):
+        log.debug("Starting task thread")
+        self.thread = threading.Thread(target=self.run)
+        self.thread.start()
 
     def stop(self):
+        log.debug("Stopping task thread")
         self.keepRunning = False
+        self.thread.join()
+        log.debug("Task thread stopped")
 
     def run(self):
         try:

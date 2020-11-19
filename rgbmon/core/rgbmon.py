@@ -1,5 +1,3 @@
-import threading
-
 import core.backend
 import core.source
 import core.effect
@@ -22,5 +20,4 @@ def run(config):
 
         # create a new thread for the task
         task = Task(task["interval"], source, effects)
-        t = threading.Thread(target=task.run)
-        t.start()
+        task.start()
