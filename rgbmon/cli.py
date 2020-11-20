@@ -11,13 +11,14 @@ handler.setFormatter(formatter)
 root = logging.getLogger()
 root.addHandler(handler)
 
-def get_arguments():
+def getArguments():
     parser = argparse.ArgumentParser(description="")
     parser.add_argument('--config', dest='config', help='path to config file')
     parser.add_argument('-v', '--verbose', dest='verbose', action='count', help='log verbosity')
+    parser.add_argument('--logfile', dest='logfile', help='log file')
     return parser.parse_args()
 
-def setloglevel(verbose):
+def setLogLevel(verbose):
     global root
     if not verbose:
         root.setLevel(logging.ERROR)
@@ -28,10 +29,19 @@ def setloglevel(verbose):
     elif verbose >= 3:
         root.setLevel(logging.DEBUG)
 
-def main():
-    args = get_arguments()
+def setLogOutput(logfile):
+    global root
+    if logfile:
+        handler = logging.FileHandler(logfile)
+        formatter = logging.Formatter(fmt = " %(name)-16s :: %(levelname)-8s :: %(message)s")
+        handler.setFormatter(formatter)
+        root.addHandler(handler)
 
-    setloglevel(args.verbose)
+def main():
+    args = getArguments()
+
+    setLogLevel(args.verbose)
+    setLogOutput(args.logfile)
 
     with open(args.config) as json_file:
         core.rgbmon.run(json.load(json_file))
