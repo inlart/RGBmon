@@ -1,5 +1,4 @@
 import logging
-import time
 
 from openrgb import OpenRGBClient
 from openrgb.utils import RGBColor, DeviceType
@@ -20,16 +19,19 @@ device_type_mapping = {
     "headset_stand": 9
 }
 
+
 def get_device_type(device):
     device = device.lower()
     if device in device_type_mapping:
         return device_type_mapping[device]
     raise ValueError("Invalid device {}".format(device))
 
+
 def create_device(id):
     ret = {}
     ret["id"] = id
     return ret
+
 
 class Backend():
     def __init__(self, settings):
@@ -49,7 +51,7 @@ class Backend():
             device_type = get_device_type(led_entry["type"])
             devices = self.client.get_devices_by_type(DeviceType(device_type))
 
-            device_list =  list(map(create_device, range(len(devices))))
+            device_list = list(map(create_device, range(len(devices))))
             if "devices" in led_entry:
                 device_list = led_entry["devices"]
             for device in device_list:
@@ -69,7 +71,6 @@ class Backend():
         if not led_list:
             logger.warning("Could not find any LEDs for backend request.")
         return led_list
-
 
     def apply(self, leds_colors):
         for led, color in leds_colors:

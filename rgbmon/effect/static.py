@@ -1,5 +1,6 @@
 from core.colormanager import ColorManager
 
+
 class Effect:
     def __init__(self, config, backend, backend_config):
         self.backend = backend

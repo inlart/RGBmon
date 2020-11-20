@@ -7,12 +7,14 @@ class Backend():
     def get_led_list(self, _):
         return range(10)
 
+
 @pytest.fixture()
 def effect():
     backend = Backend()
     config = json.loads('{"colors":["FF0000","00FF00","0000FF"]}')
     backend_config = json.loads('{"leds":[{"type": 1,"mode": "direct"}]}')
     return Effect(config, backend, backend_config)
+
 
 class TestFade:
     def test_zero(self, effect):

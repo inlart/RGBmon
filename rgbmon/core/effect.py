@@ -4,6 +4,7 @@ import logging
 
 log = logging.getLogger(__name__)
 
+
 def load_effect(effect_config, backends):
     effect_name = effect_config["name"]
 

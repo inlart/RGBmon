@@ -9,12 +9,14 @@ class Backend():
     def get_led_list(self, _):
         return range(12)
 
+
 @pytest.fixture()
 def effect():
     backend = Backend()
     config = json.loads('{}')
     backend_config = json.loads('{"leds":[{"type": 1,"mode": "direct"}]}')
     return Effect(config, backend, backend_config)
+
 
 class TestRainbow:
     def test_rainbow(self, effect):

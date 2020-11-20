@@ -3,6 +3,7 @@ import math
 import core.utils
 from core.colormanager import ColorManager
 
+
 class Effect:
     def __init__(self, config, backend, backend_config):
         # TODO: check if colors > 1

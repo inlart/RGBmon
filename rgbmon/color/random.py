@@ -1,13 +1,14 @@
 import random
 import logging
-import time
 
 import core.utils
 
 log = logging.getLogger(__name__)
 
+
 def randomColor():
     return tuple([random.randint(0, 0xff) for i in range(3)])
+
 
 class Color:
     def __init__(self, settings):

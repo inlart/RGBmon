@@ -1,8 +1,9 @@
-import core.utils
 from core.colormanager import ColorManager
+
 
 def invert(value):
     return 0xFF - value
+
 
 class Color:
     def __init__(self, settings):

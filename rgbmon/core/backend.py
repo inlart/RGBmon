@@ -4,6 +4,7 @@ import logging
 
 log = logging.getLogger(__name__)
 
+
 def load_backends(backends_config):
     backends = {}
     for backend_config in backends_config:

@@ -4,6 +4,7 @@ from core.colormanager import ColorManager
 
 log = logging.getLogger(__name__)
 
+
 class Color:
     def __init__(self, settings):
         self.smoothness = 99.5

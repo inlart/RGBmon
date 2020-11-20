@@ -1,4 +1,3 @@
-import core.utils
 import pyscreenshot as ImageGrab
 import time
 import threading
@@ -9,6 +8,7 @@ log = logging.getLogger(__name__)
 
 updateThread = None
 updateColors = []
+
 
 def updateColor(step, sleep):
     while True:
@@ -24,6 +24,7 @@ def updateColor(step, sleep):
         for c in updateColors:
             c.setColor(color)
         time.sleep(sleep)
+
 
 class Color:
     def __init__(self, config):

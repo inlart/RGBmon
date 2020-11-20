@@ -6,6 +6,7 @@ import core.utils
 
 log = logging.getLogger(__name__)
 
+
 class Task:
     def __init__(self, interval, source, converters):
         self.interval = interval
@@ -37,6 +38,9 @@ class Task:
                 if sleepTime > 0:
                     time.sleep(sleepTime)
                 else:
-                    log.warning("Missed task execution by {}s - consider increasing the task interval".format(abs(sleepTime - self.interval)))
+                    missedTime = abs(sleepTime)
+                    message = ("Missed task execution by {}s"
+                    " - consider increasing the task interval").format(missedTime)
+                    log.warning(message)
         except Exception as e:
             log.error("Execution of task failed with error: {}".format(e))

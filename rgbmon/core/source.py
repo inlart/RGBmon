@@ -4,6 +4,7 @@ import logging
 
 log = logging.getLogger(__name__)
 
+
 def load_source(source_config):
     source_name = source_config["name"]
 

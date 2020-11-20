@@ -1,6 +1,5 @@
-import math
-
 import core.utils
+
 
 class Effect:
     def __init__(self, config, backend, backend_config):

@@ -4,6 +4,7 @@ import logging
 
 log = logging.getLogger(__name__)
 
+
 def load_color(color_config):
     if not isinstance(color_config, dict):
         logging.debug("Loading static color {} without color object".format(color_config))

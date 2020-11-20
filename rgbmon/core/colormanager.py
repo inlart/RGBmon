@@ -1,6 +1,6 @@
-import itertools
 import core.color
 from functools import reduce
+
 
 class ColorManager:
     def __init__(self, config):

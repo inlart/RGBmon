@@ -12,7 +12,7 @@ setuptools.setup(
     long_description=long_description,
     long_description_content_type="text/markdown",
     url="https://github.com/inlart/RGBmon",
-    packages=setuptools.find_packages(exclude=["tests.*","tests"]),
+    packages=setuptools.find_packages(exclude=["tests.*", "tests"]),
     classifiers=[
         "Programming Language :: Python :: 3",
         "License :: OSI Approved :: GNU General Public License v3 (GPLv3)",
@@ -23,7 +23,7 @@ setuptools.setup(
         'openrgb-python',
         'pyscreenshot',
     ],
-    entry_points = {
+    entry_points={
         'console_scripts': ['rgbmon-cli=rgbmon.cli:main'],
     },
 )

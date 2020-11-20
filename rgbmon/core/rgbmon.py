@@ -4,6 +4,7 @@ import core.effect
 
 from core.task import Task
 
+
 def run(config):
     # load backends
     backends = core.backend.load_backends(config["backends"])

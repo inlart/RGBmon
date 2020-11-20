@@ -3,13 +3,13 @@ import math
 import core.utils
 from core.colormanager import ColorManager
 
+
 class Effect:
     def __init__(self, config, backend, backend_config):
         # TODO: check if colors == 2
         self.backend = backend
         self.leds = backend.get_led_list(backend_config)
         self.colors = ColorManager(config["colors"])
-
 
     def convert(self, value):
         num_segments = len(self.leds)
