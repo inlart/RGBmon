@@ -40,7 +40,7 @@ class Task:
                 else:
                     missedTime = abs(sleepTime)
                     message = ("Missed task execution by {}s"
-                    " - consider increasing the task interval").format(missedTime)
+                               " - consider increasing the task interval").format(missedTime)
                     log.warning(message)
         except Exception as e:
             log.error("Execution of task failed with error: {}".format(e))

@@ -1,7 +1,7 @@
 # RGBmon
 
 [![PyPI Status](https://badge.fury.io/py/rgbmon.svg)](https://badge.fury.io/py/rgbmon)
-[![Build Status](https://travis-ci.com/inlart/RGBmon.svg?branch=master)](https://travis-ci.com/inlart/RGBmon)
+[![CI](https://github.com/inlart/RGBmon/workflows/CI/badge.svg)](https://github.com/inlart/RGBmon/actions?query=workflow%3ACI)
 [![Documentation Status](https://readthedocs.org/projects/rgbmon/badge/?version=latest)](https://rgbmon.readthedocs.io/en/latest/?badge=latest)
 
 RGBmon is a system monitoring tool that lights up your components to indicate system status.
