@@ -1,0 +1,4 @@
+openrgb-python
+Pillow
+psutil
+pyscreenshot
