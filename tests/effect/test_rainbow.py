@@ -27,7 +27,6 @@ class TestRainbow:
                 r, g, b = color
                 h, s, v = colorsys.rgb_to_hsv(r/float(255), g/float(255), b/float(255))
                 hsv_list.append(h)
-            print(hsv_list)
             hsv_sorted = hsv_list.copy()
             hsv_sorted.sort()
 
