@@ -1,4 +1,6 @@
 import logging
+from typing import Tuple
+
 import core.utils
 from core.colormanager import ColorManager
 
@@ -14,7 +16,7 @@ class Color:
         self.colors = ColorManager(settings["colors"])
         self.color = [None] * len(self.colors)
 
-    def __getitem__(self, key : int) -> tuple[int, int, int]:
+    def __getitem__(self, key : int) -> Tuple[int, int, int]:
         if not self.color[key]:
             self.color[key] = self.colors[key]
         else:

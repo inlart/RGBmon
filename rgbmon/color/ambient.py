@@ -2,7 +2,7 @@ import pyscreenshot as ImageGrab
 import time
 import threading
 import logging
-
+from typing import Tuple
 
 log = logging.getLogger(__name__)
 
@@ -45,10 +45,10 @@ class Color:
             updateThread = threading.Thread(target=updateColor, args=[self.step, self.sleep])
             updateThread.start()
 
-    def setColor(self, color : tuple[int, int, int]):
+    def setColor(self, color : Tuple[int, int, int]):
         self.color = color
 
-    def __getitem__(self, _ : int) -> tuple[int, int, int]:
+    def __getitem__(self, _ : int) -> Tuple[int, int, int]:
         return self.color
 
     def __len__(self) -> int:

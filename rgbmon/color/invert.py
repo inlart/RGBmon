@@ -1,3 +1,5 @@
+from typing import Tuple
+
 from core.colormanager import ColorManager
 
 
@@ -9,7 +11,7 @@ class Color:
     def __init__(self, settings : dict):
         self.colors = ColorManager(settings["colors"])
 
-    def __getitem__(self, key : int) -> tuple[int, int, int]:
+    def __getitem__(self, key : int) -> Tuple[int, int, int]:
         inverted = tuple(map(invert, self.colors[key]))
         return inverted
 
