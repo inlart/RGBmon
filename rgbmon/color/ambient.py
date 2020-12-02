@@ -10,7 +10,7 @@ updateThread = None
 updateColors = []
 
 
-def updateColor(step, sleep):
+def updateColor(step : int, sleep : int):
     while True:
         image = ImageGrab.grab().getdata()
         color = (0, 0, 0)
@@ -27,7 +27,7 @@ def updateColor(step, sleep):
 
 
 class Color:
-    def __init__(self, config):
+    def __init__(self, config : dict):
         global updateThread
         global updateColors
         self.color = (255, 255, 255)
@@ -45,11 +45,11 @@ class Color:
             updateThread = threading.Thread(target=updateColor, args=[self.step, self.sleep])
             updateThread.start()
 
-    def setColor(self, color):
+    def setColor(self, color : tuple[int, int, int]):
         self.color = color
 
-    def __getitem__(self, _):
+    def __getitem__(self, _ : int) -> tuple[int, int, int]:
         return self.color
 
-    def __len__(self):
+    def __len__(self) -> int:
         return 1

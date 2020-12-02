@@ -6,7 +6,7 @@ log = logging.getLogger(__name__)
 
 
 class Color:
-    def __init__(self, settings):
+    def __init__(self, settings : dict):
         self.smoothness = 99.5
         if "smoothness" in settings:
             self.smoothness = settings["smoothness"]
@@ -14,7 +14,7 @@ class Color:
         self.colors = ColorManager(settings["colors"])
         self.color = [None] * len(self.colors)
 
-    def __getitem__(self, key):
+    def __getitem__(self, key : int) -> tuple[int, int, int]:
         if not self.color[key]:
             self.color[key] = self.colors[key]
         else:
@@ -23,5 +23,5 @@ class Color:
         returncolor = tuple(map(lambda c: int(c), self.color[key]))
         return returncolor
 
-    def __len__(self):
+    def __len__(self) -> int:
         return len(self.colors)
