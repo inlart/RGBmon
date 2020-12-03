@@ -1,7 +1,9 @@
 import logging
 
+import openrgb.orgb
 from openrgb import OpenRGBClient
 from openrgb.utils import RGBColor, DeviceType
+from typing import Tuple, List
 
 logger = logging.getLogger(__name__)
 
@@ -20,21 +22,21 @@ device_type_mapping = {
 }
 
 
-def get_device_type(device):
+def get_device_type(device : str) -> int:
     device = device.lower()
     if device in device_type_mapping:
         return device_type_mapping[device]
-    raise ValueError("Invalid device {}".format(device))
+    raise ValueError("Invalid device type {}".format(device))
 
 
-def create_device(id):
+def create_device(id : str) -> dict:
     ret = {}
     ret["id"] = id
     return ret
 
 
 class Backend():
-    def __init__(self, settings):
+    def __init__(self, settings : dict):
         ip = "127.0.0.1"
         port = 6742
         if settings:
@@ -43,7 +45,7 @@ class Backend():
         logger.info("Using OpenRGB backend at {}:{}".format(ip, port))
         self.client = OpenRGBClient(ip, port, name="RGBmon")
 
-    def get_led_list(self, config):
+    def get_led_list(self, config : dict) -> List[openrgb.orgb.LED]:
         led_config = config["leds"]
         led_list = []
         logger.debug("Retrieving led list from OpenRGB backend")
@@ -72,7 +74,7 @@ class Backend():
             logger.warning("Could not find any LEDs for backend request.")
         return led_list
 
-    def apply(self, leds_colors):
+    def apply(self, leds_colors : List[Tuple[int, openrgb.orgb.LED]]):
         for led, color in leds_colors:
             r, g, b = color
             led.set_color(RGBColor(r, g, b), fast=True)
