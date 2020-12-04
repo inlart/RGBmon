@@ -17,13 +17,16 @@ class Task:
 
     def start(self):
         log.debug("Starting task thread")
+        self.keepRunning = True
         self.thread = threading.Thread(target=self.run)
         self.thread.start()
+        log.debug("Task thread started")
 
     def stop(self):
         log.debug("Stopping task thread")
         self.keepRunning = False
         self.thread.join()
+        self.thread = None
         log.debug("Task thread stopped")
 
     def run(self):
