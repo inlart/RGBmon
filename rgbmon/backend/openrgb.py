@@ -1,4 +1,5 @@
 import logging
+import time
 
 import openrgb.orgb
 from openrgb import OpenRGBClient
@@ -39,11 +40,25 @@ class Backend():
     def __init__(self, settings : dict):
         ip = "127.0.0.1"
         port = 6742
+        retry_sleep = 5
+        retries = 3
         if settings:
             ip = settings.get("ip_address", ip)
             port = settings.get("port", port)
+            retry_sleep = settings.get("retry_sleep", retry_sleep)
+            retries = settings.get("retries", retries)
         logger.info("Using OpenRGB backend at {}:{}".format(ip, port))
-        self.client = OpenRGBClient(ip, port, name="RGBmon")
+        while not hasattr(self, "client") and retries > 0:
+            try:
+                logger.debug("Trying to connect to OpenRGB server")
+                self.client = OpenRGBClient(ip, port, name="RGBmon")
+            except ConnectionRefusedError as e:
+                logger.warning("Could not connect to OpenRGB server: {}".format(e))
+                retries -= 1
+                if not retries > 0:
+                    raise
+                time.sleep(retry_sleep)
+
 
     def get_led_list(self, config : dict) -> List[openrgb.orgb.LED]:
         led_config = config["leds"]
