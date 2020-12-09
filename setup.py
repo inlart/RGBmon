@@ -22,6 +22,8 @@ setuptools.setup(
     install_requires=[
         'openrgb-python',
         'pyscreenshot',
+        'psutil',
+        'Pillow',
     ],
     entry_points={
         'console_scripts': ['rgbmon-cli=rgbmon.cli:main'],
