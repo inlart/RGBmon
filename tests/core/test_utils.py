@@ -1,4 +1,5 @@
 import pytest
+import time
 import rgbmon.core.utils
 
 
@@ -47,5 +48,6 @@ class TestUtils:
         cur = rgbmon.core.utils.current_time()
         for i in range(10):
             newTime = rgbmon.core.utils.current_time()
-            assert(cur >= newTime)
+            assert(newTime >= cur)
             cur = newTime
+            time.sleep(0.05)
